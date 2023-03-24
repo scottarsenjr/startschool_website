@@ -110,7 +110,7 @@ def draw_question(question):
     text_rect = text.get_rect(center=(screen_width / 2, screen_height / 2))
     screen.blit(text, text_rect)
 
-
+# {{url_for('static', filename='css/style.css')}}
 async def game_over_screen(score):
     # Display final score and options to restart or quit
     text = font_big.render(f"Время закончилось!\nОчки: {score}", True, white)

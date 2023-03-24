@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <title>Landing Page</title>
-    <meta property="og:title" content="STARTSCHOOL" />
+    <meta property="og:title" content="Landing Page" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
     <meta property="twitter:card" content="summary_large_image" />
@@ -50,11 +50,10 @@
       <link href="{{url_for('static', filename='css/home.css')}}" rel="stylesheet" />
 
       <div class="home-container">
-        <a name="home"></a>
         <div data-role="Header" class="home-navbar-container">
           <div class="home-navbar">
             <div class="home-left-side">
-              <a href="#home" class="home-navlink">
+              <a href="#home" class="home-link">
                 <img
                   alt="image"
                   src="{{url_for('static', filename='img/startschool-200h.png')}}"
@@ -69,20 +68,20 @@
                 </svg>
               </div>
               <div class="home-links-container">
-                <a href="#features" class="home-link Anchor">Преимущества</a>
-                <a href="#services" class="home-link1 SmallCard-Heading">
+                <a href="#features" class="home-link1 Anchor">Преимущества</a>
+                <a href="#services" class="home-link2 SmallCard-Heading">
                   Материалы
                 </a>
-                <a href="#contacts" class="home-link2 Anchor">Контакты</a>
+                <a href="#contacts" class="home-link3 Anchor">Контакты</a>
               </div>
             </div>
           </div>
         </div>
-        <div class="home-hero">
+        <div id="home" class="home-hero">
           <div class="home-content-container">
             <div class="home-hero-text">
-              <h1 class="home-heading">STARTSCHOOL</h1>
-              <span class="home-text">
+              <h1 class="home-heading Section-Heading">STARTSCHOOL</h1>
+              <span class="home-text Section-Text">
                 STARTSCHOOL - это образовательный сайт, созданный для младших
                 школьников (от 1 до 4 классов). Сайт помогает детям в освоении
                 школьной программы и развитии навыков чтения, письма и
@@ -95,7 +94,7 @@
         </div>
         <div id="features" class="home-features">
           <div class="home-heading-container">
-            <h1 class="home-text08 Section-Heading">В чем же преимущества?</h1>
+            <h2 class="home-text01 Section-Heading">В чем же преимущества?</h2>
           </div>
           <div class="home-cards-container">
             <div class="home-features-card">
@@ -110,7 +109,9 @@
                 </svg>
               </div>
               <div class="home-text-container">
-                <span class="home-heading5 Card-Heading">​Увлекательное обучение</span>
+                <span class="home-heading1 Card-Heading">
+                  ​Увлекательное обучение
+                </span>
                 <span class="home-text02">
                   ​Сайт предоставляет интерактивные задания и игры, чтобы
                   сделать учебу более интересной и запоминающейся.
@@ -129,7 +130,9 @@
                 </svg>
               </div>
               <div class="home-text-container1">
-                <span class="home-heading5 Card-Heading">​Качественные материалы</span>
+                <span class="home-heading2 Card-Heading">
+                  ​Качественные материалы
+                </span>
                 <span class="home-text03">
                   ​Ученики могут получать доступ к полезным учебным материалам -
                   от простых математических задач до научных концепций и
@@ -149,7 +152,9 @@
                 </svg>
               </div>
               <div class="home-text-container2">
-                <span class="home-heading5 Card-Heading">​Удобство и доступность​</span>
+                <span class="home-heading3 Card-Heading">
+                  ​Удобство и доступность​
+                </span>
                 <span class="home-text04">
                   ​Доступ к обучающему материалу можно получить в любое время и
                   с любого места с помощью интернета на компьютере или мобильных
@@ -169,7 +174,9 @@
                 </svg>
               </div>
               <div class="home-text-container3">
-                <span class="home-heading5 Card-Heading">​Современные стандарты</span>
+                <span class="home-heading4 Card-Heading">
+                  ​Современные стандарты
+                </span>
                 <span class="home-text05">
                   ​StartSchool соответствует современным образовательным
                   стандартам и помогает ученикам легко достичь успеха в учебе.
@@ -226,26 +233,26 @@
           </div>
           <div class="home-cards-container1">
             <div class="home-service-card">
-              <h3 class="home-text10 Card-Heading">Видео-уроки</h3>
+              <h3 class="home-text10 Card-Heading">Видеоуроки</h3>
               <span class="home-text11">
                 <span>Короткие обучающие ролики для изучения</span>
                 <br />
               </span>
-              <span class="Anchor">Больше</span>
+              <a href="videos.html" class="home-link4 Anchor">Больше</a>
             </div>
             <div class="home-service-card1">
               <h3 class="home-text14 Card-Heading">Интерактивные игры</h3>
               <span class="home-text15 Card-Text">
                 Увлекательная и познавательная форма обучения
               </span>
-              <span class="Anchor">Больше</span>
+              <a href="game.html" class="home-link5 Anchor">Больше</a>
             </div>
             <div class="home-service-card2">
               <h3 class="home-text16 Card-Heading">Учебники</h3>
               <span class="home-text17 Card-Text">
                 Материалы в письменной форме для изучения
               </span>
-              <span class="Anchor">Больше</span>
+              <a href="literature.html" class="home-link6 Anchor">Больше</a>
             </div>
           </div>
         </div>
@@ -270,7 +277,7 @@
               placeholder="Ваш вопрос/предложение"
               class="home-message textarea"
             ></textarea>
-            <button class="home-cta-btn Anchor button">Отправить</button>
+            <button class="home-cta-btn button Anchor">ОТПРАВИТЬ</button>
           </div>
         </div>
         <div class="home-section-separator1"></div>

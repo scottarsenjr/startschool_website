@@ -1,0 +1,262 @@
+.literature-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+}
+.literature-navbar-container {
+  top: 0;
+  width: 100%;
+  display: flex;
+  z-index: 100;
+  position: sticky;
+  box-shadow: 5px 5px 10px 0px #b9b9b9;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--dl-color-gray-white);
+}
+.literature-navbar {
+  width: 100%;
+  display: flex;
+  max-width: var(--dl-size-size-maxcontent);
+  align-items: center;
+  padding-top: var(--dl-space-space-doubleunit);
+  padding-left: var(--dl-space-space-tripleunit);
+  padding-right: var(--dl-space-space-tripleunit);
+  flex-direction: row;
+  padding-bottom: var(--dl-space-space-doubleunit);
+  justify-content: space-between;
+}
+.literature-left-side {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+}
+.literature-navlink {
+  display: contents;
+}
+.literature-image {
+  width: 50px;
+  align-self: center;
+  object-fit: cover;
+  margin-right: var(--dl-space-space-doubleunit);
+  text-decoration: none;
+}
+.literature-burger-menu {
+  display: none;
+  align-items: flex-start;
+  border-radius: var(--dl-radius-radius-radius4);
+  flex-direction: column;
+}
+.literature-icon {
+  fill: #ffffff;
+  width: 36px;
+  height: 36px;
+}
+.literature-links-container {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+}
+.literature-link {
+  margin-right: var(--dl-space-space-tripleunit);
+  text-decoration: none;
+}
+.literature-services {
+  width: 100%;
+  display: flex;
+  max-width: var(--dl-size-size-maxcontent);
+  margin-top: var(--dl-space-space-fiveunits);
+  align-items: center;
+  padding-top: var(--dl-space-space-tenunits);
+  padding-left: var(--dl-space-space-tripleunit);
+  margin-bottom: var(--dl-space-space-fiveunits);
+  padding-right: var(--dl-space-space-tripleunit);
+  flex-direction: column;
+  padding-bottom: var(--dl-space-space-fiveunits);
+}
+.literature-cards-container {
+  width: 100%;
+  display: flex;
+  max-width: var(--dl-size-size-maxcontent);
+  align-items: flex-start;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.literature-service-card {
+  width: 30%;
+  display: flex;
+  padding: var(--dl-space-space-fourunits);
+  align-self: stretch;
+  align-items: flex-start;
+  border-radius: var(--dl-radius-radius-radius4);
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--dl-color-gray-900);
+}
+.literature-image1 {
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+  align-self: center;
+  object-fit: cover;
+}
+.literature-text {
+  color: var(--dl-color-gray-700);
+  font-size: 16px;
+  text-align: left;
+  margin-bottom: var(--dl-space-space-fourunits);
+}
+.literature-link1 {
+  text-decoration: none;
+}
+.literature-service-card1 {
+  width: 30%;
+  display: flex;
+  padding: var(--dl-space-space-fourunits);
+  align-self: stretch;
+  align-items: flex-start;
+  border-radius: var(--dl-radius-radius-radius4);
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--dl-color-gray-900);
+}
+.literature-image2 {
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+  align-self: center;
+  object-fit: cover;
+}
+.literature-text1 {
+  color: var(--dl-color-gray-700);
+  font-size: 16px;
+  text-align: left;
+  margin-bottom: var(--dl-space-space-fourunits);
+}
+.literature-link2 {
+  text-decoration: none;
+}
+.literature-service-card2 {
+  width: 30%;
+  display: flex;
+  padding: var(--dl-space-space-fourunits);
+  align-self: stretch;
+  align-items: flex-start;
+  border-radius: var(--dl-radius-radius-radius4);
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--dl-color-gray-900);
+}
+.literature-image3 {
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+  align-self: center;
+  object-fit: cover;
+}
+.literature-text2 {
+  color: var(--dl-color-gray-700);
+  font-size: 16px;
+  text-align: left;
+  margin-bottom: var(--dl-space-space-fourunits);
+}
+.literature-link3 {
+  text-decoration: none;
+}
+.literature-section-separator {
+  width: 100%;
+  height: 1px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  background-color: var(--dl-color-gray-900);
+}
+.literature-footer-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--dl-color-gray-white);
+}
+.literature-footer {
+  width: 100%;
+  display: flex;
+  max-width: var(--dl-size-size-maxcontent);
+  align-items: stretch;
+  padding-top: var(--dl-space-space-tripleunit);
+  padding-left: var(--dl-space-space-tripleunit);
+  padding-right: var(--dl-space-space-tripleunit);
+  flex-direction: row;
+  padding-bottom: var(--dl-space-space-tripleunit);
+  justify-content: space-between;
+}
+.literature-copyright-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+.literature-icon2 {
+  width: 24px;
+  height: 24px;
+  margin-right: var(--dl-space-space-doubleunit);
+}
+.literature-section-separator1 {
+  width: 100%;
+  height: 1px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  background-color: var(--dl-color-gray-900);
+}
+@media(max-width: 767px) {
+  .literature-burger-menu {
+    display: flex;
+    padding: var(--dl-space-space-halfunit);
+    background-color: var(--dl-color-gray-black);
+  }
+  .literature-icon {
+    fill: var(--dl-color-gray-white);
+  }
+  .literature-links-container {
+    display: none;
+  }
+  .literature-cards-container {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .literature-service-card {
+    width: 65%;
+    margin-bottom: var(--dl-space-space-fourunits);
+  }
+  .literature-service-card1 {
+    width: 65%;
+    margin-bottom: var(--dl-space-space-fourunits);
+  }
+  .literature-service-card2 {
+    width: 65%;
+    margin-bottom: var(--dl-space-space-fourunits);
+  }
+}
+@media(max-width: 479px) {
+  .literature-services {
+    padding-top: var(--dl-space-space-fiveunits);
+    padding-bottom: var(--dl-space-space-fiveunits);
+  }
+  .literature-service-card {
+    width: 100%;
+  }
+  .literature-service-card1 {
+    width: 100%;
+  }
+  .literature-service-card2 {
+    width: 100%;
+  }
+}
