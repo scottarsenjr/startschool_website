@@ -24,8 +24,8 @@ font_big = pygame.font.Font(None, 72)
 game_time = 30
 
 # Дизайн
-background_image = pygame.image.load('bg.png')
-main_menu_bg = pygame.image.load('menu_bg.png')
+background_image = pygame.image.load('games_src/bg.png')
+main_menu_bg = pygame.image.load('games_src/menu_bg.png')
 
 # Уровни сложности задач
 difficulty_levels = {
@@ -47,7 +47,7 @@ difficulty_levels = {
 }
 
 
-def choose_difficulty():
+async def choose_difficulty():
     difficulty_text = font_big.render("Выберите уровень сложности", True, white)
     easy_text = font_small.render("Легкий (1-10)", True, white)
     medium_text = font_small.render("Средний (10-50)", True, white)
@@ -61,6 +61,7 @@ def choose_difficulty():
         for i, text in enumerate([easy_text, medium_text, hard_text]):
             screen.blit(text, difficulty_rects[i])
         pygame.display.update()
+        await asyncio.sleep(0)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -86,8 +87,11 @@ def generate_question(difficulty):
         num1 = random.randint(min_num, max_num)
         num2 = random.randint(min_num, num1)
     else:
-        num1 = random.randint(min_num, max_num)
-        num2 = random.randint(min_num, max_num)
+        num2 = random.randint(1, 10) if operator == '/' else random.randint(min_num, max_num)
+        if operator == '/':
+            num1 = random.randint(min_num, max_num) * num2
+        else:
+            num1 = random.randint(min_num, max_num)
     if operator == '+':
         answer = num1 + num2
     elif operator == '-':
@@ -99,6 +103,7 @@ def generate_question(difficulty):
     question = f"{num1} {operator} {num2} = ?"
     return question, answer
 
+
 # Функция для вывода задачи на экран
 def draw_question(question):
     text = font_big.render(question, True, white)
@@ -106,32 +111,43 @@ def draw_question(question):
     screen.blit(text, text_rect)
 
 
-def reset_game():
-    # Reset game state here
-    game_time = 30
-    score = 0
+async def game_over_screen(score):
+    # Display final score and options to restart or quit
+    text = font_big.render(f"Время закончилось!\nОчки: {score}", True, white)
+    text_rect = text.get_rect(center=(screen_width / 2, screen_height / 2 - 50))
+    restart_text = font_small.render("Начать заново", True, white)
+    restart_rect = restart_text.get_rect(center=(screen_width / 2, screen_height / 2 + 50))
+    while True:
+        screen.blit(background_image, (0, 0))
+        screen.blit(text, text_rect)
+        screen.blit(restart_text, restart_rect)
+        pygame.display.update()
+        await asyncio.sleep(0)
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if restart_rect.collidepoint(event.pos):
+                    await game_loop()
 
 
-# Главный игровой цикл
 async def game_loop():
-    # Выбор уровня сложности
     global seconds
-    difficulty = choose_difficulty()
-
+    difficulty = await choose_difficulty()
     answer = ''
     answer_str = ''
     question, current_answer = generate_question(difficulty_levels[difficulty])
-
     running = True
     score = 0
     start_ticks = pygame.time.get_ticks()
     while running:
-        # Обработка событий
+        # Handle events
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
             elif event.type == pygame.KEYDOWN:
-                # Проверка правильности ответа на задачу
                 if event.unicode.isdigit():
                     answer_str += event.unicode
                 elif event.key == pygame.K_RETURN:
@@ -142,42 +158,33 @@ async def game_loop():
                         answer_str = ''
                         question, current_answer = generate_question(difficulty_levels[difficulty])
                     except ValueError:
-                        # Обработка исключения, если введенная строка не является целым числом
                         answer_str = ''
-
+                elif event.key == pygame.K_BACKSPACE:
+                    answer_str = answer_str[:-1]
 
         screen.blit(background_image, (0, 0))
-
-        # Рисование задачи и счета очков
         question_text = font_big.render(question, True, white)
         question_text_rect = question_text.get_rect(center=(screen_width / 2, screen_height / 2 - 50))
-        answer_text = font_big.render(answer_str, True, white)  # <-- ввод ответа на экран
-        answer_text_rect = answer_text.get_rect(
-            center=(screen_width / 2, screen_height / 2 + 50))  # <-- расположение ввода ответа
+        answer_text = font_big.render(answer_str, True, white)
+        answer_text_rect = answer_text.get_rect(center=(screen_width / 2, screen_height / 2 + 50))
         score_text = font_small.render(f"Очков: {score}", True, white)
         score_text_rect = score_text.get_rect(topright=(screen_width - 10, 10))
         screen.blit(question_text, question_text_rect)
-        screen.blit(answer_text, answer_text_rect)  # <-- вывод введенного ответа на экран
+        screen.blit(answer_text, answer_text_rect)
         screen.blit(score_text, score_text_rect)
 
-        # Рисование таймера
         seconds = (pygame.time.get_ticks() - start_ticks) / 1000
         time_left = game_time - seconds
         if time_left <= 0:
             running = False
+            await game_over_screen(score)
+
         timer_text = font_small.render(f"Время: {int(time_left)}", True, white)
         timer_text_rect = timer_text.get_rect(topleft=(10, 10))
         screen.blit(timer_text, timer_text_rect)
 
         pygame.display.update()
-
-    # Вывод количества очков и процента правильно решенных задач
-    result_text = font_big.render(f"Время истекло!", True, white)
-    result_text_rect = result_text.get_rect(center=(screen_width / 2, screen_height / 2))
-    screen.blit(result_text, result_text_rect)
-    pygame.display.update()
-    await asyncio.sleep(0)
-    reset_game()
+        await asyncio.sleep(0)
 
 
 if __name__ == '__main__':
